@@ -21,15 +21,13 @@ module ALU(
 	wire [63:0] mul_out, div_out;
 
 	
-	always @(*) // do the required job in each state
+	always @(*) 
 		begin
 			if (IncPC==1) begin
 					C_reg[31:0] <= IncPC_out[31:0];
 					C_reg[63:32] <= 32'd0;
 			end
-				
-			case (opcode) // assert the required signals in each clock cycle
-				
+			case (opcode) 
 				Addition,Imm_Addition,Load_Dir,Load_Imm,Store_Dir: begin
 					C_reg[31:0] <= adder_sum[31:0];
 					C_reg[63:32] <= 32'd0;
@@ -97,13 +95,7 @@ module ALU(
 						C_reg[31:0] <= Y_reg[31:0];
 						C_reg[63:32] <= 32'd0;
 					end
-				end
-				
-//				default: begin
-//					C_reg[63:0] <= 64'd0;
-//	
-//				end
-			
+				end	
 			endcase
 	end
 	
@@ -124,101 +116,3 @@ module ALU(
 	IncPC_32bit pcInc(A_reg,IncPC,IncPC_out);
 
 endmodule
-
-//module ALU_tb;
-//	 reg clk, clear;
-//	 reg signed[31:0] A_reg, B_reg, Y_reg;
-//	 wire signed[63:0] C_reg;
-//
-//	 //
-//	 reg [4:0 ]opcode = {5'b00000};
-//	 
-//	 always
-//		#10 clk <= ~clk;
-//		
-//	 initial begin
-//		clk = 0;
-//		clear = 0;
-//		
-//		#20 //Addition
-//		add<=1;
-//		Y_reg[31:0] <=32'h0000000F; 	
-//		B_reg[31:0] <=32'h000000001;  	//sum = 10,	cout = 0
-//		
-//		#20 //Subtraction
-//		add<=0;sub<=1; 	
-//		Y_reg[31:0] <=32'd235; 	
-//		B_reg[31:0] <=32'd35;  	//sum = 2, 		cout = 0
-//
-//
-//		#20 //Negate
-//		sub<=0;neg<=1;
-//	   A_reg[31:0] <=32'hFFFFFFFF; 	// z=32'h00000001	
-//		
-//		#20 //Not
-//		neg<=0;_not<=1;
-//	   A_reg[31:0] <=32'h00000000; 	// z=32'hFFFFFFFF
-//	
-//	   #20 // Logical_AND
-//		_not<=0;land<=1;
-//		Y_reg[31:0] <=32'h00000037;
-//		B_reg[31:0] <=32'h00000073; 	//	 z=32'h00000033	
-//		
-//	   #20 // Logical_OR
-//		land<=0;lor<=1;
-//		Y_reg[31:0] <=32'h00000037;
-//		B_reg[31:0] <=32'h00000073; 	// z=32'h00000077
-//
-//		#20	//Shifting right
-//		lor<=0;shr<=1; 
-//		Y_reg[31:0] <= 32'hFFFFFFF0;
-//		B_reg[31:0] <= 32'd1;
-//		
-//		#20	//Shifting left
-//		shr<=0; shl<=1;
-//		Y_reg[31:0] <= 32'hFFFFFFFF;
-//		B_reg[31:0] <= 32'd1;
-//		
-//		#20	//Rotating right
-//		shl<=0;rr<=1; 
-//		Y_reg[31:0] <= 32'h0FFFFFFF;
-//		B_reg[31:0] <= 32'd1;
-//		
-//		#20	//Rotating left
-//		rr<=0; rl<=1;
-//		Y_reg[31:0] <= 32'hFFFFFFF0;
-//		B_reg[31:0] <= 32'd1;
-//		
-//		#20	//Multiply
-//		rl<=0; mult<=1;
-//		Y_reg[31:0] <= 32'hFFFFFFF6;
-//		B_reg[31:0] <= 73;
-//		
-//		#20	//Divide
-//	   mult<=0; div<=1;
-//		Y_reg[31:0] <= 32'd100;
-//		B_reg[31:0] <= 32'd3;
-//		
-//	 end
-//	 
-//	 ALU alu(
-//		.clk(clk),
-//		.clear(clear),
-//		
-//		.A_reg(A_reg),
-//		.B_reg(B_reg),
-//		.Y_reg(Y_reg),
-//	
-//		.opcode(opcode),
-//		
-//		.C_reg(C_reg)
-//	);	
-//	 
-//	// initial	
-//	//	$monitor( "A=%d, Y=%d, B=%d, C= %d", A_reg,Y_reg,B_reg,C_reg);
-//
-//			
-//endmodule
-
-
-
