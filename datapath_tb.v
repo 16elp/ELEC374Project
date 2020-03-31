@@ -83,8 +83,6 @@ always @(posedge clk)
 			T4 : Present_state = T5;
 			T5 : Present_state = T6;
 			T6 : Present_state = T7;
-
-
 		endcase
 	end
 
