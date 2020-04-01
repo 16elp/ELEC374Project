@@ -1,6 +1,6 @@
 //Filename: SHL_32bit.v
 
-module SHL_32bit(
+module SHL(
 	input wire [31:0] data_in,
 	input wire [31:0] num_shifts,
 	output wire [31:0] out
@@ -11,7 +11,7 @@ module SHL_32bit(
 	
 endmodule
 
-module SHL_32bit_tb;
+module SHL_tb;
 	reg [31:0] in = 0;
 	wire [31:0] data_out;
 	integer a = 2;
@@ -20,7 +20,7 @@ module SHL_32bit_tb;
 		#100 in <= 32'hFFFFFFF0;
 	end
 	
-	SHL_32bit shl(
+	SHL shl(
 		in,
 		a,
 		data_out
