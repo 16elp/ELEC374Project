@@ -4,8 +4,9 @@
 module ALU(input clk, input clear, input branch_flag, input IncPC, input wire [31:0] A, 
 	   input wire [31:0] Y, input wire [31:0] B, input wire [4:0] opcode, output reg [63:0] C_reg);
 	
-	wire [31:0] IncPCOutput, shrOutput, shlOutput, lorOutput, landOutput, negOutput, notOutput, adderSum, adderOutput, subSum, subOutput, rolOutput, rorOutput;
-	wire [63:0] mul_out, div_out;
+	wire [31:0] IncPCOutput, shrOutput, shlOutput, lorOutput, landOutput, negOutput, notOutput, 
+		    adderSum, adderOutput, subSum, subOutput, rolOutput, rorOutput;
+	wire [63:0] mulOutput, divOutput;
 
 	
 	always @(*) 
