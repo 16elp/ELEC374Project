@@ -1,6 +1,6 @@
 // File Name: Reg_32bit_tb
 `timescale 1ns/10ps
-module Reg_32bit_tb;
+module Reg_tb;
 	reg clr;
 	reg clk; 
 	reg R1in;
@@ -44,7 +44,7 @@ module Reg_32bit_tb;
 	always
 		#10 clk <= ~clk;
 
-	Reg_32bit reg_32bit(
+	Registers reg_32bit(
 		clk,
 		clr,
 		R1in,
