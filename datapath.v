@@ -82,9 +82,7 @@ Registers Out_port(clk,clr,enableOutPort,BusMuxOut, OutPort_output);
 
 Registers IR_reg(clk, clr, enableIR, BusMuxOut, IR_data_out);
 IR_logic IR_log(IR_data_out,Gra,Grb,Grc,R_enable,Rout,BAout,opcode,C_sign_extended,enableR_IR,Rout_IR,decoder_in);
-	
 CONFF CON_FF(IR_data_out[20:19], BusMuxOut, enableCON, CON_out);
-
 Registers PC_reg(clk, clr, enablePC, BusMuxOut, PC_data_out);
 	
 RAM ram(MDR_data_out,MAR_data_out,RAM_write,clk,RAM_data_out);
@@ -95,12 +93,13 @@ Registers MAR(clk, clr, enableMAR, BusMuxOut, MAR_data_out);
 
 Encoder busEncoder({{8{1'b0}},Cout,InPortout,MDRout,PCout,ZLowout,ZHighout,LOout,HIout,Rout}, bus_encoder_signal);
 	
-Multiplexer Mux(.BusMuxInR0(BusMuxInR0), .BusMuxInR1(BusMuxInR1), .BusMuxInR2(BusMuxInR2), .BusMuxInR3(BusMuxInR3), .BusMuxInR4(BusMuxInR4), 
-		.BusMuxInR5(BusMuxInR5), .BusMuxInR6(BusMuxInR6), .BusMuxInR7(BusMuxInR7), .BusMuxInR8(BusMuxInR8), .BusMuxInR9(BusMuxInR9), 
-		.BusMuxInR10(BusMuxInR10), .BusMuxInR11(BusMuxInR11), .BusMuxInR12(BusMuxInR12), .BusMuxInR13(BusMuxInR13), 
-		.BusMuxInR14(BusMuxInR14), .BusMuxInR15(BusMuxInR15), .BusMuxInHI(HI_data_out),.BusMuxInLO(LO_data_out), 
-		.BusMuxInZhigh(ZHigh_data_out),.BusMuxInZlow(ZLow_data_out), .BusMuxInPC(PC_data_out), .BusMuxInMDR(MDR_data_out), 
-		.BusMuxInInPort(InPort_data_out), .C_sign_extended(C_sign_extended), .select_signal(bus_encoder_signal), .BusMuxOut(BusMuxOut));
+Multiplexer Mux(.BusMuxInR0(BusMuxInR0), .BusMuxInR1(BusMuxInR1), .BusMuxInR2(BusMuxInR2), .BusMuxInR3(BusMuxInR3), 
+		.BusMuxInR4(BusMuxInR4), .BusMuxInR5(BusMuxInR5), .BusMuxInR6(BusMuxInR6), .BusMuxInR7(BusMuxInR7), 
+		.BusMuxInR8(BusMuxInR8), .BusMuxInR9(BusMuxInR9), .BusMuxInR10(BusMuxInR10), .BusMuxInR11(BusMuxInR11), 
+		.BusMuxInR12(BusMuxInR12), .BusMuxInR13(BusMuxInR13), .BusMuxInR14(BusMuxInR14), .BusMuxInR15(BusMuxInR15), 
+		.BusMuxInHI(HI_data_out),.BusMuxInLO(LO_data_out), .BusMuxInZhigh(ZHigh_data_out),.BusMuxInZlow(ZLow_data_out), 
+		.BusMuxInPC(PC_data_out), .BusMuxInMDR(MDR_data_out), .BusMuxInInPort(InPort_data_out), .C_sign_extended(C_sign_extended), 
+		.select_signal(bus_encoder_signal), .BusMuxOut(BusMuxOut));
 	
 ALU alu(.clk(clk), .clear(clr), .A(BusMuxOut), .B(BusMuxOut), .Y(Y_data_out),  
 	.opcode(opcode), .C(C_data_out), .branch_flag(CON_out), .IncPC(IncPC));	
