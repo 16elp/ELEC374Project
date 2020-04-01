@@ -9,13 +9,13 @@ end
 
 Reg_load1b: begin    
 	MDRout <= 1; enableR<=16'h0002;   
-	#15 MDRout <= 0; enableR<= 16'd0; // initialize R1 with the value F0000000
+	#15 MDRout <= 0; enableR<= 16'd0; 
 end
 
 Reg_load3a: begin
 	Mdatain <= 32'h00000000;   
   	enableMDR <= 1;MDR_read<=3'd2;
-	#15 enableMDR <= 0;MDR_read<=3'd0; //Load PC with start of program in RAM
+	#15 enableMDR <= 0;MDR_read<=3'd0; 
 end
 
 Reg_load3b: begin
@@ -29,7 +29,7 @@ T0: begin
 end
 
 T1: begin
-	enableMDR <= 1; MDR_read<=3'd1;   //Loads MDR from RAM output
+	enableMDR <= 1; MDR_read<=3'd1;   
 	#15 enableMDR <= 0; MDR_read<=3'd0;
 end
 
