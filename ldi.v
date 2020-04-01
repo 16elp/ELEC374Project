@@ -1,26 +1,26 @@
 //Instruction: 08080023 // ldi 
 			
 			Reg_load1a: begin
-				Mdatain <= 32'h00000000;     //Data to be inserted into R0
+				Mdatain <= 32'h00000000;
 				enableMDR <= 1; MDR_read<=3'd2;
 				#15 enableMDR <= 0;MDR_read<=3'd0;
 			end
 			Reg_load1b: begin    
-				MDRout <= 1; enableR<=16'h0001; //to enable R0 
+				MDRout <= 1; enableR<=16'h0001;
 				#15 MDRout <= 0; enableR<= 16'd0;
 			end
 			Reg_load2a: begin
-			   	Mdatain <= 32'h0000000F;      //Data to be inserted into R1
+			   	Mdatain <= 32'h0000000F; 
 			  	enableMDR <= 1;MDR_read<=3'd2;
-				  #15 enableMDR <= 0;MDR_read<=3'd0;
+				#15 enableMDR <= 0;MDR_read<=3'd0;
 			end
 			Reg_load2b: begin
-				MDRout <= 1; enableR<=16'h0002;  //enable R1    
+				MDRout <= 1; enableR<=16'h0002;    
 				#15 MDRout <= 0; enableR<= 16'd0;
 			end
 			Reg_load3a: begin
 				Mdatain <= 32'h00000000;   
-			   enableMDR <= 1;MDR_read<=3'd2;
+			   	enableMDR <= 1;MDR_read<=3'd2;
 				#15 enableMDR <= 0;MDR_read<=3'd0;
 			end
 			Reg_load3b: begin
@@ -32,7 +32,7 @@
 				#15 PCout <= 0; enableMAR <= 0; 
 			end
 			T1: begin
-			   enableMDR <= 1; MDR_read<=3'd1;   //Loads MDR from RAM output
+			   	enableMDR <= 1; MDR_read<=3'd1;
 				#15 enableMDR <= 0; MDR_read<=3'd0;
 			end
 			T2: begin
@@ -48,6 +48,6 @@
 				#15 Cout<=0;enableZ <= 0;
 			end
 			T5: begin
-			   ZLowout <= 1;  Gra <= 1; R_enable <= 1;
+			   	ZLowout <= 1;  Gra <= 1; R_enable <= 1;
 				#15 ZLowout <= 0; Gra <= 1; R_enable <= 0; Rout <= 1;
 			end
