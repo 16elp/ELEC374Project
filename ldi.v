@@ -51,3 +51,6 @@
 			   	ZLowout <= 1;  Gra <= 1; R_enable <= 1;
 				#15 ZLowout <= 0; Gra <= 1; R_enable <= 0; Rout <= 1;
 			end
+
+
+
