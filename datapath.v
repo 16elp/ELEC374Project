@@ -1,15 +1,12 @@
 `timescale 1ns/10ps
 
-module datapath(input clk, input clr, input RAM_read, input wire [2:0] MDR_read,
-		input wire [31:0] Mdatain, input RAM_write, input IncPC, input R_enable,
-		input Rout, input wire [15:0] R_enableIn, input wire [15:0] Rout_in,
-		input Gra, input Grb, input Grc, input enableMDR, input enableMAR,	
-   		input enableHI, input enableLO, input enableZ, input enableY,
-   		input enablePC, input enableInPort, input enableOutPort, input enableIR,
-		input enableCON, input MDRout, input InPortout, input OutPortout,
-		input PCout, input Yout, input ZLowout, input ZHighout, input LOout,
-		input HIout, input Cout, input BAout, input wire[31:0] InPort_input,
-		output wire[31:0] OutPort_output, output wire [31:0] BusMuxOut,
+module datapath(input clk, input clr, input RAM_read, input wire [2:0] MDR_read, input wire [31:0] Mdatain, 
+		input RAM_write, input IncPC, input R_enable, input Rout, input wire [15:0] R_enableIn, 
+		input wire [15:0] Rout_in, input Gra, input Grb, input Grc, input enableMDR, input enableMAR,	
+   		input enableHI, input enableLO, input enableZ, input enableY, input enablePC, input enableInPort, 
+		input enableOutPort, input enableIR, input enableCON, input MDRout, input InPortout, input OutPortout,
+		input PCout, input Yout, input ZLowout, input ZHighout, input LOout, input HIout, input Cout, 
+		input BAout, input wire[31:0] InPort_input, output wire[31:0] OutPort_output, output wire [31:0] BusMuxOut,
 		output wire [4:0] opcode); 
 
 wire [15:0] enableR_IR; 
