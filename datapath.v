@@ -14,9 +14,9 @@ module datapath(input clk, input clr, input RAM_read, input wire [2:0] MDR_read,
 
 wire [15:0] enableR_IR; 
 wire [15:0] Rout_IR;
-reg [15:0] enableR; 
-reg [15:0]Rout;
-wire [3:0] decoder_in;
+reg [15:0]  enableR; 
+reg [15:0]  Rout;
+wire [3:0]  decoder_in;
 wire [31:0] BusMuxInR0_to_AND;
 wire [31:0] BusMuxInR0;
 wire [31:0] BusMuxInR1;
@@ -47,7 +47,7 @@ wire [31:0] IR_data_out;
 wire [31:0] MDR_mux_data_out;
 wire [31:0] MDR_data_out;
 wire [31:0] MAR_data_out;
-wire [4:0] bus_encoder_signal;
+wire [4:0]  bus_encoder_signal;
 wire [31:0] RAM_data_out;
 wire CON_out;
 	
@@ -60,7 +60,6 @@ end
 	
 Registers R0(clk, clr, enableR[0], BusMuxOut, BusMuxInR0_to_AND);
 assign BusMuxInR0 = {32{!BAout}} & BusMuxInR0_to_AND;
-
 Registers R1(clk, clr, enableR[1], BusMuxOut, BusMuxInR1);
 Registers R2(clk, clr, enableR[2], BusMuxOut, BusMuxInR2);
 Registers R3(clk, clr, enableR[3], BusMuxOut, BusMuxInR3);
@@ -102,40 +101,16 @@ Registers MAR(clk, clr, enableMAR, BusMuxOut, MAR_data_out);
 
 Encoder busEncoder({{8{1'b0}},Cout,InPortout,MDRout,PCout,ZLowout,ZHighout,LOout,HIout,Rout}, bus_encoder_signal);
 	
-Multiplexer Mux(.BusMuxInR0(BusMuxInR0),
-		.BusMuxInR1(BusMuxInR1), 
-		.BusMuxInR2(BusMuxInR2), 
-		.BusMuxInR3(BusMuxInR3), 
-		.BusMuxInR4(BusMuxInR4), 
-		.BusMuxInR5(BusMuxInR5), 
-		.BusMuxInR6(BusMuxInR6), 
-		.BusMuxInR7(BusMuxInR7), 
-		.BusMuxInR8(BusMuxInR8), 
-		.BusMuxInR9(BusMuxInR9), 
-		.BusMuxInR10(BusMuxInR10), 		
-		.BusMuxInR11(BusMuxInR11), 
-		.BusMuxInR12(BusMuxInR12), 
-		.BusMuxInR13(BusMuxInR13), 
-		.BusMuxInR14(BusMuxInR14), 
-		.BusMuxInR15(BusMuxInR15), 
-		.BusMuxInHI(HI_data_out),
-		.BusMuxInLO(LO_data_out),
-		.BusMuxInZhigh(ZHigh_data_out),
-      		.BusMuxInZlow(ZLow_data_out),
-		.BusMuxInPC(PC_data_out),	
-		.BusMuxInMDR(MDR_data_out),		
-		.BusMuxInInPort(InPort_data_out),
-		.C_sign_extended(C_sign_extended),
-		.select_signal(bus_encoder_signal),
-		.BusMuxOut(BusMuxOut));
+Multiplexer Mux(.BusMuxInR0(BusMuxInR0), .BusMuxInR1(BusMuxInR1), .BusMuxInR2(BusMuxInR2), 
+		.BusMuxInR3(BusMuxInR3), .BusMuxInR4(BusMuxInR4), .BusMuxInR5(BusMuxInR5), 
+		.BusMuxInR6(BusMuxInR6), .BusMuxInR7(BusMuxInR7), .BusMuxInR8(BusMuxInR8), 
+		.BusMuxInR9(BusMuxInR9), .BusMuxInR10(BusMuxInR10), .BusMuxInR11(BusMuxInR11), 
+		.BusMuxInR12(BusMuxInR12), .BusMuxInR13(BusMuxInR13), .BusMuxInR14(BusMuxInR14), 
+		.BusMuxInR15(BusMuxInR15), .BusMuxInHI(HI_data_out),.BusMuxInLO(LO_data_out),
+		.BusMuxInZhigh(ZHigh_data_out),.BusMuxInZlow(ZLow_data_out), .BusMuxInPC(PC_data_out),	
+		.BusMuxInMDR(MDR_data_out), .BusMuxInInPort(InPort_data_out), .C_sign_extended(C_sign_extended), 
+		.select_signal(bus_encoder_signal), .BusMuxOut(BusMuxOut));
 	
-ALU alu(.clk(clk),
-	.clear(clr),
-	.A(BusMuxOut), 
-	.B(BusMuxOut), 
-	.Y(Y_data_out),  
-	.opcode(opcode),
-	.C(C_data_out),
-	.branch_flag(CON_out),
-	.IncPC(IncPC));	
+ALU alu(.clk(clk), .clear(clr), .A(BusMuxOut), .B(BusMuxOut), .Y(Y_data_out),  
+	.opcode(opcode), .C(C_data_out), .branch_flag(CON_out), .IncPC(IncPC));	
 endmodule
