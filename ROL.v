@@ -1,6 +1,6 @@
 //Filename: ROL_32bit.v
 
-module ROL_32bit(
+module ROL(
 	input wire [31:0] data_in,
 	input wire [4:0] num_rotate,
 	output reg [31:0] data_out
@@ -45,7 +45,7 @@ module ROL_32bit(
 endmodule 
 
 
-module ROL_32bit_tb;
+module ROL_tb;
 	reg [31:0] data_in = 0;
 	wire [31:0] data_out;
 	integer num=0;
@@ -58,7 +58,7 @@ module ROL_32bit_tb;
 
 	end
 	
-	ROL_32bit rol_op(data_in,num,data_out);
+	ROL rol_op(data_in,num,data_out);
 		
 	initial
 	  $monitor( "input=%h, output= %h, num=%d", data_in, data_out, num);
