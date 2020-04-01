@@ -98,8 +98,8 @@ Multiplexer Mux(.BusMuxInR0(BusMuxInR0), .BusMuxInR1(BusMuxInR1), .BusMuxInR2(Bu
 		.BusMuxInR8(BusMuxInR8), .BusMuxInR9(BusMuxInR9), .BusMuxInR10(BusMuxInR10), .BusMuxInR11(BusMuxInR11), 
 		.BusMuxInR12(BusMuxInR12), .BusMuxInR13(BusMuxInR13), .BusMuxInR14(BusMuxInR14), .BusMuxInR15(BusMuxInR15), 
 		.BusMuxInHI(HI_data_out),.BusMuxInLO(LO_data_out), .BusMuxInZhigh(ZHigh_data_out),.BusMuxInZlow(ZLow_data_out), 
-		.BusMuxInPC(PC_data_out), .BusMuxInMDR(MDR_data_out), .BusMuxInInPort(InPort_data_out), .C_sign_extended(C_sign_extended), 
-		.select_signal(bus_encoder_signal), .BusMuxOut(BusMuxOut));
+		.BusMuxInPC(PC_data_out), .BusMuxInMDR(MDR_data_out), .BusMuxInInPort(InPort_data_out), 
+		.C_sign_extended(C_sign_extended), .select_signal(bus_encoder_signal), .BusMuxOut(BusMuxOut));
 	
 ALU alu(.clk(clk), .clear(clr), .A(BusMuxOut), .B(BusMuxOut), .Y(Y_data_out),  
 	.opcode(opcode), .C(C_data_out), .branch_flag(CON_out), .IncPC(IncPC));	
