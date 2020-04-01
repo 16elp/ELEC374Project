@@ -131,11 +131,11 @@ Multiplexer Mux(.BusMuxInR0(BusMuxInR0),
 	
 ALU alu(.clk(clk),
 	.clear(clr),
-	.A_reg(BusMuxOut), 
-	.B_reg(BusMuxOut), 
-	.Y_reg(Y_data_out),  
+	.A(BusMuxOut), 
+	.B(BusMuxOut), 
+	.Y(Y_data_out),  
 	.opcode(opcode),
-	.C_reg(C_data_out),
+	.C(C_data_out),
 	.branch_flag(CON_out),
 	.IncPC(IncPC));	
 endmodule
