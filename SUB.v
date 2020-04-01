@@ -1,7 +1,7 @@
-// File Name: SUB_32bit.v
+
 
 `timescale 1ns / 1ps
-module SUB_32bit(
+module SUB(
 	input wire [31:0] Ra,
 	input wire [31:0] Rb,
 	input wire cin,
@@ -19,7 +19,7 @@ endmodule
 
 
 //Testbench
-module SUB_32bit_tb;
+module SUB_tb;
 	reg [31:0] x,y;
 	reg cin;
 	wire signed [31:0] z;
@@ -34,7 +34,7 @@ module SUB_32bit_tb;
 	end
 	
 	
-	SUB_32bit sub_op(.Ra(x), .Rb(y),.cin(cin),.sum(z),.cout(cout));
+	SUB sub_op(.Ra(x), .Rb(y),.cin(cin),.sum(z),.cout(cout));
 	
 	initial
 	  $monitor( "X=%d, Y=%d, Cin= %d, Z=%d, Cout=%d", x,y,cin,z,cout);
