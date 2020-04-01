@@ -1,7 +1,7 @@
 // File Name: AND_32bit.v
 
 `timescale 1ns / 1ps
-module AND_32bit(
+module AND(
 	input wire [31:0] Ra,
 	input wire [31:0] Rb,
 	output wire [31:0] Rz
