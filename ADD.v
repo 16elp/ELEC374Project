@@ -1,7 +1,7 @@
-//// File Name: ADD_32bit.v
-//
+
+
 `timescale 1ns / 1ps
-module ADD_32bit(
+module ADD(
 	input [31:0] Ra,
 	input [31:0] Rb,
 	input wire cin,
@@ -12,23 +12,21 @@ module ADD_32bit(
 	
 wire cout1;
  
-CLA_16bit CLA1(	.Ra(Ra[15:0]),
-					.Rb(Rb[15:0]),
-					.cin(cin), 
-					.sum(sum[15:0]), 
-					.cout(cout1));
+CLA16 CLA1(	.Ra(Ra[15:0]),
+		.Rb(Rb[15:0]),
+		.cin(cin), 
+		.sum(sum[15:0]), 
+		.cout(cout1));
 					
-CLA_16bit CLA2(	.Ra(Ra[31:16]), 
-					.Rb(Rb[31:16]), 
-					.cin(cout1), 
-					.sum(sum[31:16]), 
-					.cout(cout));
-				
- 
+CLA16 CLA2(	.Ra(Ra[31:16]), 
+		.Rb(Rb[31:16]), 
+		.cin(cout1), 
+		.sum(sum[31:16]), 
+		.cout(cout));
 endmodule
 
 //Smaller 16bit CLA
-module CLA_16bit(
+module CLA16(
 	input wire [15:0] Ra,
 	input wire [15:0] Rb,
 	input wire cin,
@@ -39,35 +37,35 @@ module CLA_16bit(
 	
 wire cout1,cout2,cout3;
  
-CLA_4bit CLA1(	.Ra(Ra[3:0]),
-					.Rb(Rb[3:0]),
-					.cin(cin), 
-					.sum(sum[3:0]), 
-					.cout(cout1));
+CLA4 CLA1(	.Ra(Ra[3:0]),
+		.Rb(Rb[3:0]),
+		.cin(cin), 
+		.sum(sum[3:0]), 
+		.cout(cout1));
 					
-CLA_4bit CLA2(	.Ra(Ra[7:4]), 
-					.Rb(Rb[7:4]), 
-					.cin(cout1), 
-					.sum(sum[7:4]), 
-					.cout(cout2));
+CLA4 CLA2(	.Ra(Ra[7:4]), 
+		.Rb(Rb[7:4]), 
+		.cin(cout1), 
+		.sum(sum[7:4]), 
+		.cout(cout2));
 					
-CLA_4bit CLA3(	.Ra(Ra[11:8]), 
-					.Rb(Rb[11:8]), 
-					.cin(cout2), 
-					.sum(sum[11:8]), 
-					.cout(cout3));
+CLA4 CLA3(	.Ra(Ra[11:8]), 
+		.Rb(Rb[11:8]), 
+		.cin(cout2), 
+		.sum(sum[11:8]), 
+		.cout(cout3));
 					
-CLA_4bit CLA4(	.Ra(Ra[15:12]), 
-					.Rb(Rb[15:12]), 
-					.cin(cout3), 
-					.sum(sum[15:12]), 
-					.cout(cout));
+CLA4 CLA4(	.Ra(Ra[15:12]), 
+		.Rb(Rb[15:12]), 
+		.cin(cout3), 
+		.sum(sum[15:12]), 
+		.cout(cout));
  
 endmodule
  
 
 // smaller 4-bit CLA
-module CLA_4bit(
+module CLA4(
 	input wire [3:0] Ra,
 	input wire [3:0] Rb,
 	input wire cin,
@@ -92,7 +90,7 @@ endmodule
 
 
 //Testbench
-module ADD_32bit_tb;
+module ADD_tb;
 	reg [31:0] x,y;
 	reg cin;
 	wire [31:0] z;
@@ -109,7 +107,7 @@ module ADD_32bit_tb;
 
 		end
 	
-	ADD_32bit adder(.Ra(x), .Rb(y),.cin(cin),.sum(z),.cout(cout_f));
+	ADD adder(.Ra(x), .Rb(y),.cin(cin),.sum(z),.cout(cout_f));
 	
 	initial
 	  $monitor( "X=%h, Y=%h, Cin= %h, Z=%h, Cout=%h", x,y,cin,z,cout_f);
@@ -118,13 +116,13 @@ endmodule
 
 
 ////Testbench
-module CLA_16bit_tb;
+module CLA16_tb;
 reg [15:0] a,b;
 reg cin;
 wire [15:0] sum;
 wire cout;
  
-  CLA_16bit uut(.Ra(a), .Rb(b),.cin(cin),.sum(sum),.cout(cout));
+  CLA16 uut(.Ra(a), .Rb(b),.cin(cin),.sum(sum),.cout(cout));
  
 initial begin
   a=0; b=0; cin=0;
