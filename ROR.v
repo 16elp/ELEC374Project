@@ -1,6 +1,6 @@
 //Filename: ROR_32bit.v
 
-module ROR_32bit(
+module ROR(
 	input wire [31:0] data_in,
 	input wire [4:0] num_rotate,
 	output reg [31:0] data_out
@@ -45,7 +45,7 @@ module ROR_32bit(
 endmodule 
 
 
-module ROR_32bit_tb;
+module ROR_tb;
 	reg [31:0] data_in = 0;
 	wire [31:0] data_out;
 	integer num=0;
@@ -58,7 +58,7 @@ module ROR_32bit_tb;
 
 	end
 	
-	ROR_32bit ror_op(data_in,num,data_out);
+	ROR ror_op(data_in,num,data_out);
 		
 	initial
 	  $monitor( "input=%h, output= %h, num=%d", data_in, data_out, num);
