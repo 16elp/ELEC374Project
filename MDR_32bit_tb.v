@@ -1,4 +1,4 @@
-// File Name: MDR_32bit_tb
+
 // dependent files: MDMux_32bit.v MDR_32bit.v
 `timescale 1ns/10ps
 module MDR_32bit_tb;
