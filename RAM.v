@@ -17,3 +17,5 @@ module RAM(input [31:0] data, input [7:0] address, input we, clk, output [31:0] 
 	end
 	assign q = ram[addressReg];
 endmodule
+
+
