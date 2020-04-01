@@ -1,5 +1,7 @@
 //Instruction: 00800055 // ld r1, 85
 			
+
+
 			Reg_load1a: begin
 				Mdatain <= 32'h00000000;     //Data to be inserted into R2
 				enableMDR <= 1; MDR_read<=3'd2;
@@ -50,3 +52,6 @@
 			   	MDRout <= 1; Gra <= 1; R_enable <= 1;
 				#15 MDRout <= 0; Gra <= 1; R_enable <= 0; Rout <= 1;
 			end
+
+
+
