@@ -1,4 +1,4 @@
-// File Name: AND_32bit.v
+
 
 `timescale 1ns / 1ps
 module AND(
@@ -32,7 +32,7 @@ module AND_32bit_tb;
 	  #10 x=32'h00000037; 	y=32'h00000073; 	// z=32'h00000033
 	end
 	
-	AND_32bit and_op(.Ra(x), .Rb(y),.Rz(z));
+	AND and_op(.Ra(x), .Rb(y),.Rz(z));
 	
 	initial
 	  $monitor( "X=%h, Y=%h, Z= %h", x,y,z);
