@@ -31,6 +31,8 @@ T1: begin
 	#15 enableMDR <= 0; MDR_read<=3'd0;
 end
 
+
+
 T2: begin
 	MDRout <= 1; enableIR <= 1;
 	#15 MDRout <= 0; enableIR <= 0;			
