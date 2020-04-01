@@ -1,6 +1,6 @@
-//Filename: SHR_32bit.v
 
-module SHR_32bit(
+
+module SHR(
 	input wire [31:0] data_in,
 	input wire [31:0] num_shifts,
 	output wire [31:0] out
@@ -15,7 +15,7 @@ module SHR_32bit(
 endmodule 
 
 
-module SHR_32bit_tb;
+module SHR_tb;
 	reg [31:0] in = 0;
 	wire [31:0] data_out;
 	integer a = 1;
@@ -24,7 +24,7 @@ module SHR_32bit_tb;
 		#100 in <= 32'hFFFFFFF0;
 	end
 	
-	SHR_32bit shr(
+	SHR shr(
 		in,
 		a,
 		data_out
