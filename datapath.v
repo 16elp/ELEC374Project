@@ -27,7 +27,7 @@ wire [31:0] BusMuxInR8;
 wire [31:0] BusMuxInR9;
 wire [31:0] BusMuxInR10;	
 wire [31:0] BusMuxInR11;
-wire [31:0] BusMuxInR12;x
+wire [31:0] BusMuxInR12;
 wire [31:0] BusMuxInR13;
 wire [31:0] BusMuxInR14;
 wire [31:0] BusMuxInR15;
