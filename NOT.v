@@ -1,7 +1,7 @@
 // File Name: NOT_32bit.v
 
 `timescale 1ns / 1ps
-module NOT_32bit(
+module NOT(
 	input wire [31:0] Ra,
 	output wire [31:0] Rz
 	);
@@ -19,7 +19,7 @@ endmodule
 
 
 //Testbench
-module NOT_32bit_tb;
+module NOT_tb;
 	reg [31:0] x;
 	wire [31:0] z;
 	 
@@ -30,7 +30,7 @@ module NOT_32bit_tb;
 	  #10 x=32'hFFFFFFFF; 	// z=32'h00000000
 	end
 	
-	NOT_32bit not_op(.Ra(x),.Rz(z));
+	NOT not_op(.Ra(x),.Rz(z));
 	
 	initial
 	  $monitor( "X=%h, Z= %h", x,z);
