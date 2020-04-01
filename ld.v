@@ -3,12 +3,12 @@
 
 
 			Reg_load1a: begin
-				Mdatain <= 32'h00000000;     //Data to be inserted into R2
+				Mdatain <= 32'h00000000;    
 				enableMDR <= 1; MDR_read<=3'd2;
 				#15 enableMDR <= 0;MDR_read<=3'd0;
 			end
 			Reg_load1b: begin    
-				MDRout <= 1; R0_R15_enable<=16'h0001; //to enable R2 
+				MDRout <= 1; R0_R15_enable<=16'h0001;
 				#15 MDRout <= 0; R0_R15_enable<= 16'd0;
 			end	
 			Reg_load3a: begin
@@ -25,7 +25,7 @@
 				#15 PCout <= 0; enableMAR <= 0; 
 			end
 			T1: begin
-			   	enableMDR <= 1; MDR_read<=3'd1;   //Loads MDR from RAM output
+			   	enableMDR <= 1; MDR_read<=3'd1;   
 				#15 enableMDR <= 0; MDR_read<=3'd0;
 			end
 			T2: begin
