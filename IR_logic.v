@@ -6,8 +6,10 @@ module IR_logic(input [31:0] instruction, input Gra, input Grb, input Grc, input
 		output wire [3:0] decoderInput);
 	
 	wire [15:0] decoderOutput;
+	
 	assign decoderInput = (instruction[26:23]&{4{Gra}}) | (instruction[22:19]&{4{Grb}}) | (instruction[18:15]&{4{Grc}});
-	decoder	dec(decoderInput, decoderOutput);
+	decoder	decoded(decoderInput, decoderOutput);
+	
 	assign opcode = instruction[31:27];
 	assign C_sign_extended = {{13{instruction[18]}},instruction[18:0]};
 	assign RegIn = {16{Rin}} & decoderOutput;
