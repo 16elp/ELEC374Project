@@ -77,7 +77,6 @@ Registers ZLow(clk, clr, enableZ, C_data_out[31:0], ZLow_data_out);
 Registers Yreg(clk, clr, enableY, BusMuxOut, Y_data_out);
 Registers HIreg(clk, clr, enableHI, BusMuxOut, HI_data_out);
 Registers LOreg(clk, clr, enableLO, BusMuxOut, LO_data_out);
-
 Registers In_port(clk,clr,enableInPort,InPort_input, InPort_data_out);
 Registers Out_port(clk,clr,enableOutPort,BusMuxOut, OutPort_output);
 
