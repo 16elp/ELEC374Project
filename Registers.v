@@ -1,7 +1,7 @@
-// File Name: Reg_32bit.v
+
 `timescale 1ns/10ps
 
-module Reg_32bit(
+module Registers(
 	input wire clk, 
 	input wire clr,
 	input wire enable,
