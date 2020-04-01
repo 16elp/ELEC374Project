@@ -96,7 +96,7 @@ Registers PC_reg(clk, clr, enablePC, BusMuxOut, PC_data_out);
 	
 RAM ram(MDR_data_out,MAR_data_out,RAM_write,clk,RAM_data_out);
 	
-Multiplexer MDR_mux(BusMuxOut,RAM_data_out,Mdatain,MDR_read, MDR_mux_data_out);
+multiplexer3to1 MDR_mux(BusMuxOut,RAM_data_out,Mdatain,MDR_read, MDR_mux_data_out);
 Registers MDR(clk, clr, enableMDR, MDR_mux_data_out, MDR_data_out);
 Registers MAR(clk, clr, enableMAR, BusMuxOut, MAR_data_out);
 
