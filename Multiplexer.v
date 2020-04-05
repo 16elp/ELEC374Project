@@ -1,34 +1,7 @@
 
 `timescale 1ns/10ps
 
-module Multiplexer(
-	input wire [31:0] BusMuxInR0,
-	input wire [31:0] BusMuxInR1,
-	input wire [31:0] BusMuxInR2,
-	input wire [31:0] BusMuxInR3,
-	input wire [31:0] BusMuxInR4,
-	input wire [31:0] BusMuxInR5,
-	input wire [31:0] BusMuxInR6,
-	input wire [31:0] BusMuxInR7,
-	input wire [31:0] BusMuxInR8,
-	input wire [31:0] BusMuxInR9,
-	input wire [31:0] BusMuxInR10,
-	input wire [31:0] BusMuxInR11,
-	input wire [31:0] BusMuxInR12,
-	input wire [31:0] BusMuxInR13,
-	input wire [31:0] BusMuxInR14,
-	input wire [31:0] BusMuxInR15,
-	input wire [31:0] BusMuxInHI,
-	input wire [31:0] BusMuxInLO,
-	input wire [31:0] BusMuxInZhigh,
-	input wire [31:0] BusMuxInZlow,
-	input wire [31:0] BusMuxInPC,
-	input wire [31:0] BusMuxInMDR,	
-	input wire [31:0] BusMuxInInPort,	
-	input wire [31:0] C_sign_extended,
-	output reg [31:0] BusMuxOut,
-	input wire [4:0] select_signal);
-		
+module Multiplexer(input wire [31:0] BusMuxInR0, input wire [31:0] BusMuxInR1, input wire [31:0] BusMuxInR2, input wire [31:0] BusMuxInR3, input wire [31:0] BusMuxInR4, input wire [31:0] BusMuxInR5, input wire [31:0] BusMuxInR6, input wire [31:0] BusMuxInR7, input wire [31:0] BusMuxInR8, input wire [31:0] BusMuxInR9, input wire [31:0] BusMuxInR10, input wire [31:0] BusMuxInR11, input wire [31:0] BusMuxInR12, input wire [31:0] BusMuxInR13, input wire [31:0] BusMuxInR14, input wire [31:0] BusMuxInR15, input wire [31:0] BusMuxInHI, input wire [31:0] BusMuxInLO, input wire [31:0] BusMuxInZhigh, input wire [31:0] BusMuxInZlow, input wire [31:0] BusMuxInPC, input wire [31:0] BusMuxInMDR, input wire [31:0] BusMuxInInPort, input wire [31:0] C_sign_extended, output reg [31:0] BusMuxOut, input wire [4:0] select_signal);	
 	always@(*) begin
 		case(select_signal)
          		5'd0 : BusMuxOut <= BusMuxInR0[31:0];
