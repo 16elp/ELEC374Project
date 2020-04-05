@@ -1,18 +1,11 @@
 // File Name: NOT_32bit.v
 
 `timescale 1ns / 1ps
-module NEGATE(
-	input wire [31:0] Ra,
-	output wire [31:0] Rz
-	);
-	//	assign Rz =!Ra +1;
-	
+module NEGATE(input wire [31:0] Ra, output wire [31:0] Rz);
 	wire [31:0] temp; 
 	wire cout;
-	NOT_32bit not_op(.Ra(Ra),.Rz(temp));
-	ADD_32bit add_op(.Ra(temp), .Rb(32'd1),.cin(1'd0),.sum(Rz),.cout(cout));
-	
-
+	NOT not(.Ra(Ra),.Rz(temp));
+	ADD add(.Ra(temp), .Rb(32'd1),.cin(1'd0),.sum(Rz),.cout(cout));
 endmodule
 
 
