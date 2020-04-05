@@ -1,13 +1,7 @@
 // File Name: NOT_32bit.v
 
 `timescale 1ns / 1ps
-module NOT(
-	input wire [31:0] Ra,
-	output wire [31:0] Rz
-	);
-	
-//	assign Rz = !Ra;
-	
+module NOT(input wire [31:0] Ra, output wire [31:0] Rz);
 	genvar i;
 	generate
 		for (i=0; i<32;i=i+1) begin : loop
