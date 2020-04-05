@@ -1,14 +1,7 @@
 
 `timescale 1ns/10ps
 
-module Registers(
-	input wire clk, 
-	input wire clr,
-	input wire enable,
-	input wire [31:0] d,
-	output reg [31:0] q
-);
-		
+module Registers(input wire clk, input wire clr, input wire enable, input wire [31:0] d, output reg [31:0] q);	
 	always@(clk) 
 	begin
 		if (clr) begin
@@ -17,10 +10,7 @@ module Registers(
 		else if(enable) begin
 			q[31:0] <= d[31:0];
 		end
-
-
 	end
-
 endmodule
 
 
