@@ -1,13 +1,10 @@
 
-`timescale 1ns/10ps
+/
 
-module ALU(input clk, input clear, input branch_flag, input IncPC, input wire [31:0] A, 
-	   input wire [31:0] Y, input wire [31:0] B, input wire [4:0] opcode, output reg [63:0] C_reg);
+module ALU(input clk, input clear, input branch_flag, input IncPC, input wire [31:0] A, input wire [31:0] Y, input wire [31:0] B, input wire [4:0] opcode, output reg [63:0] C_reg);
 	
-	wire [31:0] IncPCOutput, shrOutput, shlOutput, lorOutput, landOutput, negOutput, notOutput, 
-		    adderSum, adderOutput, subSum, subOutput, rolOutput, rorOutput;
+	wire [31:0] IncPCOutput, shrOutput, shlOutput, lorOutput, landOutput, negOutput, notOutput, adderSum, adderOutput, subSum, subOutput, rolOutput, rorOutput;
 	wire [63:0] mulOutput, divOutput;
-
 	
 	always @(*) 
 		begin
@@ -74,7 +71,6 @@ module ALU(input clk, input clear, input branch_flag, input IncPC, input wire [3
 				end	
 			endcase
 	end
-	
 	SHL shl(Y,B,shlOutput);
 	SHR shr(Y,B,shrOutput);
 	OR lor(Y,B,lorOutput);
