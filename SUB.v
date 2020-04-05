@@ -1,19 +1,10 @@
 
 
 `timescale 1ns / 1ps
-module SUB(
-	input wire [31:0] Ra,
-	input wire [31:0] Rb,
-	input wire cin,
-	
-	output wire [31:0] sum,
-	output wire cout
-	);
-	
+module SUB(input wire [31:0] Ra, input wire [31:0] Rb, input wire cin, output wire [31:0] sum, output wire cout);
 	wire [31:0] temp; 
-	NEGATE_32bit neg_op(.Ra(Rb),.Rz(temp));
-	ADD_32bit add_op(.Ra(Ra), .Rb(temp),.cin(cin),.sum(sum),.cout(cout));
-	
+	NEGATE neg(.Ra(Rb),.Rz(temp));
+	ADD add(.Ra(Ra), .Rb(temp),.cin(cin),.sum(sum),.cout(cout));
 endmodule
 
 
