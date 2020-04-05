@@ -1,14 +1,7 @@
 //Filename: SHL_32bit.v
 
-module SHL(
-	input wire [31:0] data_in,
-	input wire [31:0] num_shifts,
-	output wire [31:0] out
-);
-
-	assign out[31:0] = data_in<<num_shifts;
-
-	
+module SHL(input wire [31:0] in, input wire [31:0] shifts, output wire [31:0] out);
+	assign out[31:0] = in<<shifts;
 endmodule
 
 module SHL_tb;
