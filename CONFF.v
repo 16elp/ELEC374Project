@@ -15,9 +15,7 @@ module CONFF(input [1:0] IR_bits, input signed [31:0] bus, input CONInput, outpu
 	assign negative 	= (bus[31] == 1) ? 1'b1 : 1'b0;
 	
 	decoder	dec(IR_bits, decoderOutput);
-	
 	assign branchFlag=(decoderOutput[0]&equal|decoderOutput[1]&notEqual|decoderOutput[2]&positive|decoderOutput[3]&negative);
-	
 	ff CONff(.clk(CONInput), .D(branchFlag), .Q(CONOutput));
 endmodule
 
